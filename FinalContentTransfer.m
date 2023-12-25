@@ -111,8 +111,7 @@ infoarray=~ismember(infoarray,Sides).*infoarray;
 
 % sort infoarray in descending order
 infoarray=sort(infoarray,'descend');
-% For removing 0 elements from infoarray (because it is problematic
-%infoarray(i(j)) I will write:
+% For removing 0 elements from infoarray 
 for i=numel(infoarray):-1:1
     if infoarray(i)==0
         infoarray(i)=[];
