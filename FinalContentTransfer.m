@@ -124,8 +124,7 @@ x=zeros(NumberofPixelsWithEvents,NumFrames);
 xLowPassFilter=zeros(NumberofPixelsWithEvents,NumFrames);
 count=zeros(NumberofPixelsWithEvents,1);
 
-%The reason for choosing 50 is that I do not think I will see more than 50
-%events in a pixel, it is arbitrary.
+%No more than 50 events in a pixel:
 
 Ap=zeros(NumberofPixelsWithEvents,50);
 
@@ -152,9 +151,7 @@ for j=1:NumberofPixelsWithEvents
  count(j)=sum(Ap(j,:)>0);
 end
 
-%Although I think all counts==3 or some of them even higher are 
-%correct, I will remove count>=3 to make sure i=everything is correct
-%This is the code for removing pixels with equal or more than 3 events
+%This is the code for removing pixels with equal or more than 3 events although they are correct
 %from count, Ap, and inforarray
 i=find(count>=3);
 i=unique(i);
@@ -168,7 +165,6 @@ for j=1:numel(i)
 end
 
 %To make the frame matrix based on Pixels
-%I do not think I will have more than 20 pixels for a frame. 
 %50 is arbitrary
 FramebyPixel=zeros(NumFrames,50);
 for j=1:max(max(Ap))
@@ -178,7 +174,7 @@ for j=1:max(max(Ap))
     end
 end
 
-%I will start from Bigger pixels to smaller ones. Then, I will
+%Starting from bigger pixels to smaller ones. 
 FramebyPixel=sort(FramebyPixel,2,'descend');
 
 
